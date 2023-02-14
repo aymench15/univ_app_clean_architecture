@@ -1,7 +1,7 @@
 import 'package:dio/dio.dart';
-import 'package:movie_app_with_two_modules/errors/errors.dart';
+import 'package:movie_app_with_two_modules/core/errors/errors.dart';
 import 'package:movie_app_with_two_modules/movies/data/model/movie_model.dart';
-import 'package:movie_app_with_two_modules/network/Exception.dart';
+import 'package:movie_app_with_two_modules/core/network/Exception.dart';
 import '../../../core/utils/Constances.dart';
 
 abstract class BaseMovieRemoteData {

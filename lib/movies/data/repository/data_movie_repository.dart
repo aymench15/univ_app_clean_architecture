@@ -1,6 +1,6 @@
 import 'package:dartz/dartz.dart';
-import 'package:movie_app_with_two_modules/errors/errors.dart';
-import 'package:movie_app_with_two_modules/errors/failure.dart';
+import 'package:movie_app_with_two_modules/core/errors/errors.dart';
+import 'package:movie_app_with_two_modules/core/errors/failure.dart';
 import 'package:movie_app_with_two_modules/movies/domain/entities/movie.dart';
 
 import '../../domain/repository/domain_repository.dart';

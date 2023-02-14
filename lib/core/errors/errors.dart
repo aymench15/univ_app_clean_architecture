@@ -1,4 +1,4 @@
-import 'package:movie_app_with_two_modules/network/Exception.dart';
+import 'package:movie_app_with_two_modules/core/network/Exception.dart';
 
 class HandleErrors implements Exception {
   final ErrorExecption errorExecption;

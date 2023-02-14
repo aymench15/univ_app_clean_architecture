@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:movie_app_with_two_modules/core/services/services_locator.dart';
 import 'package:movie_app_with_two_modules/movies/domain/entities/movie.dart';
 import 'package:movie_app_with_two_modules/movies/presentation/screens/Movies.dart';
 
@@ -21,7 +22,7 @@ void main() async {
       releaseDate: "2020");
   print(movie1 == movie2);
 
-
+  ServiceLocator().init();
   runApp(const MyApp());
 }
 
@@ -40,4 +41,3 @@ class MyApp extends StatelessWidget {
     );
   }
 }
-
