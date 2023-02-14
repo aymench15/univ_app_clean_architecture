@@ -16,15 +16,15 @@ class MovieRemoteData implements BaseMovieRemoteData {
     
       var dio = Dio();
 
-      final response = await dio.get(
+      final res = await dio.get(
           '${AppConstances.ApiUri}/now_playing?api_key=${AppConstances.ApiKey}');
-      if (response.statusCode == 200) {
-        return List<MovieModel>.from((response.data["results"] as List).map(
+      if (res.statusCode == 200) {
+        return List<MovieModel>.from((res.data["results"] as List).map(
           (e) => MovieModel.fromJson(e),
         ));
       }
       else
-       return throw HandleErrors(errorExecption: ErrorExecption.fromJson(response.data));
+       return throw HandleErrors(errorExecption: ErrorExecption.fromJson(res.data));
     }
     
       @override
