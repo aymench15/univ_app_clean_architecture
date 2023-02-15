@@ -17,8 +17,10 @@ class Movies extends StatelessWidget {
       }),
       child: BlocBuilder<MoviesBloc, MovieState>(
         builder: (context, state) {
-          print(state.nowState);
-          return const Scaffold();
+          print(context);
+          return const Scaffold(
+            
+          );
         },
       ),
     );
