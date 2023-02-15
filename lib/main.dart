@@ -3,6 +3,8 @@ import 'package:movie_app_with_two_modules/core/services/services_locator.dart';
 import 'package:movie_app_with_two_modules/movies/domain/entities/movie.dart';
 import 'package:movie_app_with_two_modules/movies/presentation/screens/Movies.dart';
 
+import 'movies/presentation/screens/movies_screen.dart';
+
 void main() async {
   Movie movie1 = const Movie(
       id: 2,
@@ -37,7 +39,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const Movies(title: 'Flutter Movies'),
+      home: const MainMoviesScreen(title: 'Flutter Movies'),
     );
   }
 }
