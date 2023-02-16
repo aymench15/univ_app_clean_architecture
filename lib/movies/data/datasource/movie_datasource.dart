@@ -55,7 +55,7 @@ class MovieRemoteData implements BaseMovieRemoteData {
         ));
       }
       else
-       return throw HandleErrors(errorExecption: ErrorExecption.fromJson(response.data));
+       return throw  HandleErrors(errorExecption: ErrorExecption.fromJson(response.data));
   
   }
   }

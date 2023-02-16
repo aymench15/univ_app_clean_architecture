@@ -7,7 +7,7 @@ class MovieState extends Equatable {
   final List<Movie> movies;
    final RequestState nowState;
   final String message;
-  const MovieState({this.movies = const[],  this.nowState = RequestState.loading,  this.message = ""});
+  const MovieState({  this.movies = const [],  this.nowState = RequestState.loading,  this.message = ""});
   @override
-  List<Object?> get props => [];
+  List<Object?> get props => [movies, nowState,message];
 }

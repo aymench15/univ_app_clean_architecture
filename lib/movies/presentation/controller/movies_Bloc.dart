@@ -9,12 +9,14 @@ class MoviesBloc extends Bloc<MoviesEvents, MovieState> {
   MoviesBloc(this.playingNow) : super(const MovieState()) {
     on(<PlayingNowMovies>(event, emit) async {
       final result = await playingNow.execute();
-
-      print(result);
+      //print(result);
       result.fold(
           (l) => emit(
               MovieState(nowState: RequestState.error, message: l.message)),
-          (r) => emit(const MovieState(nowState: RequestState.loaded)));
+          (r) => emit( MovieState(
+              movies: r,
+              nowState: RequestState.loaded,
+              message: "Data Reaches Completely ! ")));
     });
   }
 }

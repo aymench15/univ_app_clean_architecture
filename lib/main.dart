@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:movie_app_with_two_modules/core/services/services_locator.dart';
 import 'package:movie_app_with_two_modules/movies/domain/entities/movie.dart';
-import 'package:movie_app_with_two_modules/movies/presentation/screens/Movies.dart';
+import 'package:movie_app_with_two_modules/test.dart';
 
 import 'movies/presentation/screens/movies_screen.dart';
 
@@ -39,7 +39,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const MainMoviesScreen(title: 'Flutter Movies'),
+      home: const TestScreen(),
     );
   }
 }
