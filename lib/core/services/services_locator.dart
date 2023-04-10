@@ -1,23 +1,37 @@
 import 'package:get_it/get_it.dart';
-import 'package:movie_app_with_two_modules/movies/presentation/controller/movies_bloc.dart';
-
-import '../../movies/data/datasource/movie_datasource.dart';
-import '../../movies/data/repository/data_movie_repository.dart';
-import '../../movies/domain/repository/domain_repository.dart';
-import '../../movies/domain/usecases/PlayingNowMoviesUseCase.dart';
+import 'package:http/http.dart';
+import 'package:univ/core/localDB/database.dart';
+import '../../timetable/data/datasource/time_datasource.dart';
+import '../../timetable/data/repository/data_repository.dart';
+import '../../timetable/domain/repository/domain_repository.dart';
+import '../../timetable/domain/usecases/FacultyUseCase.dart';
+import '../../timetable/domain/usecases/Field_UseCase.dart';
+import '../../timetable/domain/usecases/departmentUseCase.dart';
+import '../../timetable/domain/usecases/group_UseCase.dart';
+import '../../timetable/domain/usecases/level_UseCase.dart';
+import '../../timetable/domain/usecases/section_UseCase.dart';
+import '../../timetable/domain/usecases/time_tableUseCase.dart';
+import '../../timetable/presentation/controller/data_bloc/data_bloc.dart';
 
 GetIt getIt = GetIt.instance;
 
 class ServiceLocator {
   void init() {
-    getIt.registerFactory(() => MoviesBloc(getIt()));
+    getIt.registerFactory(() => DataBloc(
+        getIt(), getIt(), getIt(), getIt(), getIt(), getIt(), getIt()));
+    getIt.registerLazySingleton(() => FacultyUseCase(getIt()));
+    getIt.registerLazySingleton(() => DepartmentUseCase(getIt()));
+    getIt.registerLazySingleton(() => FieldUseCase(getIt()));
+    getIt.registerLazySingleton(() => GroupUseCase(getIt()));
+    getIt.registerLazySingleton(() => LevelUseCase(getIt()));
+    getIt.registerLazySingleton(() => SectionUseCase(getIt()));
+    getIt.registerLazySingleton(() => TimeTableUseCase(getIt()));
+    getIt.registerLazySingleton(() => DBHelper());
 
-    getIt.registerLazySingleton(() => PlayingNowMoviesUseCase(getIt()));
+    getIt
+        .registerLazySingleton<DomainRepository>(() => DataRepository(getIt()));
 
-    getIt.registerLazySingleton<DomainRepository>(
-        () => DataMovieRepository(getIt()));
-
-    getIt.registerLazySingleton<BaseMovieRemoteData>(() => MovieRemoteData());
+    getIt.registerLazySingleton<BaseRemoteData>(() => RemoteData());
     /* 
       //Movie movie = (await PlayingNowMovies(dimainRepository).execute()) as Movie;
       final result = await PlayingNowMoviesUseCase(domainRepository).execute();*/
