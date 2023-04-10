@@ -1,4 +1,4 @@
-# movie_app_with_two_modules
+# univ_app_clean_architecutre_bloc_state_managmenet
 
 A new Flutter project.
 
