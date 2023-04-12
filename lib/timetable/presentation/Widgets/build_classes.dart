@@ -8,25 +8,26 @@ class BuildClasses extends StatelessWidget {
   final bool fromMyLocal;
   final DateFormat dateFormat = DateFormat("hh:mm a");
 
-  BuildClasses({super.key, required this.list,required this.fromMyLocal});
+  BuildClasses({super.key, required this.list, required this.fromMyLocal});
 
   @override
   Widget build(BuildContext context) {
+    print(list.length);
     if (list.length == 0)
       return Container(
           height: MediaQuery.of(context).size.height - 345,
           child: Center(
               child: Text(
             "No Courses for this day",
-        //    style: TextStyle(color: Colors.white),
+            //    style: TextStyle(color: Colors.white),
           )));
     return ListView.builder(
       shrinkWrap: true,
       physics: const BouncingScrollPhysics(),
       itemCount: list.length,
       itemBuilder: (BuildContext context, int index) {
-        Classes c = classes[index];
-        _getStatus(c);
+      //  Classes c = classes[index];
+        //_getStatus(c);
         return Column(
           // mainAxisAlignment: MainAxisAlignment.start,
           children: <Widget>[
@@ -34,38 +35,27 @@ class BuildClasses extends StatelessWidget {
               // mainAxisAlignment: MainAxisAlignment.end,
               children: <Widget>[
                 Text(
-                  (!fromMyLocal)?
-                  "${getCoursesHours(int.parse(list[index][13]))}" 
-                  :"${getCoursesHours(int.parse(list[index]["uknown_fields3"]))}"
-                  
-                  
-                   ,
+                  (!fromMyLocal)
+                      ? "${getCoursesHours(int.parse(list[index][13]))}"
+                      : "${getCoursesHours(int.parse(list[index]["time_slot"]))}",
                   // "${dateFormat.format(c.time)}",
                   style: TextStyle(
-                     color:  Theme.of(context)
-                                  .colorScheme
-                                  .onSecondary,
-                     // c.isPassed
-                        //  ? Colors.white.withOpacity(0.2)
+                    color: Theme.of(context).colorScheme.onSecondary,
+                    // c.isPassed
+                    //  ? Colors.white.withOpacity(0.2)
                     fontSize: 15.0,
                   ),
                 ),
                 SizedBox(width: 15.0),
-                _getTime(c, context),
+                //_getTime(c, context),
                 SizedBox(width: 22.0),
                 Text(
-                  (!fromMyLocal) ?
-                  list[index][8]
-                  :list[index]["loc"]
-                  
-                   ,
+                  (!fromMyLocal) ? list[index][8] : list[index]["module_name"],
                   style: TextStyle(
-                     color:  Theme.of(context)
-                                  .colorScheme
-                                  .onSecondary,
+                    color: Theme.of(context).colorScheme.onSecondary,
                     // c.isPassed
-                        //  ? Colors.white.withOpacity(0.2)
-                      
+                    //  ? Colors.white.withOpacity(0.2)
+
                     fontSize: 18.0,
                   ),
                 ),
@@ -117,9 +107,9 @@ class BuildClasses extends StatelessWidget {
                         ),
                         SizedBox(width: 8.0),
                         Text(
-                          (!fromMyLocal)?
-                          '${list[index][2]} (${getCoursState(int.parse(list[index][19]))})'
-                          : list[index]["cours_type"],
+                          (!fromMyLocal)
+                              ? '${list[index][2]} (${getCoursState(int.parse(list[index][19]))})'
+                              : list[index]["cours_type"],
                           style: TextStyle(
                             color: /*c.isPassed
                                 ? kTextColor.withOpacity(0.3)
@@ -146,12 +136,12 @@ class BuildClasses extends StatelessWidget {
                         ),
                         SizedBox(width: 8.0),
                         Text(
-                          (!fromMyLocal) ?
-                          getReducedName("${list[index][5]} ${list[index][6]}")
-                           : getReducedName(
-                              "${list[index]["prof_firstName"]} ${list[index]["prof_lastName"]}"),
-                         
-                          style: TextStyle(
+                          (!fromMyLocal)
+                              ? getReducedName(
+                                  "${list[index][5]} ${list[index][6]}")
+                              : getReducedName(
+                                  "${list[index]["prof_firstName"]} ${list[index]["prof_lastName"]}"),
+                          style: const TextStyle(
                             color: // c.isPassed
                                 //? kTextColor.withOpacity(0.3)
                                 Color(0xFF6C7174),
@@ -168,19 +158,17 @@ class BuildClasses extends StatelessWidget {
                           Icons.location_on,
                           /*c.isPassed
                               ?*/
-                             color:  Theme.of(context)
-                                  .colorScheme
-                                  .secondary,
-                                //  .withOpacity(0.3),
-                           
+                          color: Theme.of(context).colorScheme.secondary,
+                          //  .withOpacity(0.3),
+
                           size: 15.0,
                         ),
-                        SizedBox(width: 8.0),
+                       const SizedBox(width: 8.0),
                         Text(
-                          (!fromMyLocal) ?
-                          "${list[index][9]}"
-                          : "${list[index]["location"]} (${getCoursState(int.parse(list[index]["online"]))})",
-                          style: TextStyle(
+                          (!fromMyLocal)
+                              ? getReducedName("${list[index][9]}")
+                              : getReducedName("${list[index]["loc"]} (${getCoursState(int.parse(list[index]["online"]))})"),
+                          style: const TextStyle(
                             color: // c.isPassed
                                 //   ? kTextColor.withOpacity(0.3)
                                 Color(0xFF6C7174),
@@ -270,5 +258,3 @@ class BuildClasses extends StatelessWidget {
     return null;
   }
 }
-
-

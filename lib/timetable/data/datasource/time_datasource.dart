@@ -144,6 +144,5 @@ class RemoteData implements BaseRemoteData {
       return t.listOfLists;
     } else
       return throw HandleErrors(errorExecption: ErrorExecption.fromJson({}));
-    return throw HandleErrors(errorExecption: ErrorExecption.fromJson({}));
   }
 }

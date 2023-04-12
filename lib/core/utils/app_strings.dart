@@ -9,7 +9,9 @@ class AppStrings {
   static const String prof_firstName = "prof_firstName";
   static const String module_name = "module_name";
   static const String loc = "loc";
+  static const String uknown_fields = "uknown_fields";
   static const String uknown_fields1 = "uknown_fields1";
+  static const String uknown_fields1_2 = "uknown_fields1_2";
   static const String week_days = "week_days";
   static const String time_slot = "time_slot";
   static const String uknown_fields2 = "uknown_fields2";

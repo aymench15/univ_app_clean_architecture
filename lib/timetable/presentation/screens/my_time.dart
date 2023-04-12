@@ -40,7 +40,7 @@ class _Mtime extends State<MyTime> {
         backgroundColor: Theme.of(context).colorScheme.background,
         resizeToAvoidBottomInset: true,
         appBar: AppBar(
-          title: Center(child: Text(widget.list[0][2])),
+          title: Center(child: Text('${widget.list[0][3]} schedule')),
           bottom: const TabBar(
             indicatorColor: Color.fromARGB(255, 101, 226, 160),
             tabs: [
@@ -95,11 +95,12 @@ class _Mtime extends State<MyTime> {
   }
 
   Future<void> add_schedule(bool isSelected, list, grp, id) async {
+    print(list);
     if (isSelected) {
       await AppConstances.connect.deleteAllData();
       await AppConstances.connect.insertData(list);
       await AppConstances.connect.insertNameGrp(grp, id);
-     StatusAlert.show(
+      StatusAlert.show(
         context,
         //   duration: Duration(milliseconds: 500),
         title: 'Saved',
@@ -114,7 +115,9 @@ class _Mtime extends State<MyTime> {
 
   List getLists(timetable, int num) {
     timetable.sort((a, b) => int.parse(a[12]).compareTo(int.parse(b[12])));
-    return timetable.where((list) => int.parse(list[12]) == num).toList();
+    List l = timetable.where((list) => int.parse(list[12]) == num).toList();
+    l.sort((a, b) => int.parse(a[13]).compareTo(int.parse(b[13])));
+    return l;
   }
   /*
 

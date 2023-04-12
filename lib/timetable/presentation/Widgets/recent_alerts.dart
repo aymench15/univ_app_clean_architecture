@@ -46,12 +46,10 @@ class RcntAlert extends State<RecentsAlerts> {
                   now.month,
                   now.day,
                   dateFormat
-                      .parse(
-                          getHours(int.parse(subList[index]["uknown_fields3"])))
+                      .parse(getHours(int.parse(subList[index]["time_slot"])))
                       .hour,
                   dateFormat
-                      .parse(
-                          getHours(int.parse(subList[index]["uknown_fields3"])))
+                      .parse(getHours(int.parse(subList[index]["time_slot"])))
                       .minute);
 
               var difference = targetTime.difference(now);
@@ -109,7 +107,7 @@ class RcntAlert extends State<RecentsAlerts> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: <Widget>[
                             Text(
-                              subList[index]["loc"],
+                              subList[index]["module_name"],
                               style: TextStyle(
                                   color:
                                       Theme.of(context).colorScheme.onSecondary,
@@ -129,7 +127,7 @@ class RcntAlert extends State<RecentsAlerts> {
                                 ),
                                 SizedBox(width: 10.0),
                                 Text(
-                                  " Today : ${getHours(int.parse(subList[index]["uknown_fields3"]))}",
+                                  " Today : ${getHours(int.parse(subList[index]["time_slot"]))}",
                                   style: TextStyle(
                                     color:
                                         Theme.of(context).colorScheme.onSurface,
@@ -216,12 +214,14 @@ class RcntAlert extends State<RecentsAlerts> {
 
   List getLists(timetable, int num) {
     if (num == 8) num = 1;
-    timetable.sort((a, b) => int.parse(a["uknown_fields2"]).compareTo(int.parse(
-        b["uknown_fields2"]))); /* print(
+    timetable.sort((a, b) => int.parse(a["week_days"]).compareTo(int.parse(b[
+        "week_days"]))); /* print(
         'entred ==>>> \n ${timetable.where((list) => int.parse(list[12]) == 2).toList()} \n ');*/
-    return timetable
-        .where((list) => int.parse(list["uknown_fields2"]) == num)
-        .toList();
+    List l =
+        timetable.where((list) => int.parse(list["week_days"]) == num).toList();
+    l.sort((a, b) =>
+        int.parse(a["time_slot"]).compareTo(int.parse(b["time_slot"])));
+    return l;
   }
 
   DateTime checkForNewTime() {

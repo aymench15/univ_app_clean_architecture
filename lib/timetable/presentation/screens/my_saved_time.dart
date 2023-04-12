@@ -12,8 +12,6 @@ class MySavedTime extends StatefulWidget {
 }
 
 class _MySavedSchedule extends State<MySavedTime> {
-
-
   @override
   Widget build(BuildContext context) {
     if (widget.list.length < 1) {
@@ -25,7 +23,8 @@ class _MySavedSchedule extends State<MySavedTime> {
         backgroundColor: Theme.of(context).colorScheme.background,
         resizeToAvoidBottomInset: true,
         appBar: AppBar(
-          title: Center(child: Text("${widget.list[0]["study_level"]} schedule")),
+          title:
+              Center(child: Text("${widget.list[0]["study_level"]} schedule")),
           automaticallyImplyLeading: false,
           bottom: const TabBar(
             tabs: [
@@ -76,13 +75,12 @@ class _MySavedSchedule extends State<MySavedTime> {
 
   List getLists(timetable, int num) {
     print(timetable[num - 1]);
-    timetable.sort((a, b) => int.parse(a["uknown_fields2"])
-        .compareTo(int.parse(b["uknown_fields2"])));
-
-    /* print(
-        'entred ==>>> \n ${timetable.where((list) => int.parse(list[12]) == 2).toList()} \n ');*/
-    return timetable
-        .where((list) => int.parse(list["uknown_fields2"]) == num)
-        .toList();
+    timetable.sort((a, b) =>
+        int.parse(a["week_days"]).compareTo(int.parse(b["week_days"])));
+    List l =
+        timetable.where((list) => int.parse(list["week_days"]) == num).toList();
+    l.sort((a, b) =>
+        int.parse(a["time_slot"]).compareTo(int.parse(b["time_slot"])));
+    return l;
   }
 }
