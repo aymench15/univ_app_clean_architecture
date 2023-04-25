@@ -12,54 +12,7 @@ void main() async {
     create: (context) => ThemeBloc()..add(InitialThemeSetEvent()),
     child: const MyApp(),
   ));
-  /*
-  runApp(MultiBlocProvider(providers: [
-    // BlocProvider(create: (coontext) => ThemeBloc())],child: const MyApp(),)
-    BlocProvider(
-      create: (context) => ThemeBloc()..add(InitialThemeSetEvent()))
-      ],
-      child: const MyApp(),
-  ));*/
-  /*
-  runApp(BlocProvider(
-    create: (context) => ThemeBloc()..add(InitialThemeSetEvent()),
-    child: const MyApp(),
-  ));*/
 }
-/*
-void main() async {
-  ServiceLocator().init();
-  /*
-  runApp(
-    MultiBlocProvider(providers: [
-      BlocProvider(create: (coontext) => ThemeBloc())],child: const MyApp(),)
-   
-  );*/
-  runApp(MultiBlocProvider(providers: [
-    // BlocProvider(create: (coontext) => ThemeBloc())],child: const MyApp(),)
-    BlocProvider(
-      create: (context) => ThemeBloc()..add(InitialThemeSetEvent()))],
-      child: const MyApp(),
-  ));
-}
-*/
-/*
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return BlocBuilder<ThemeBloc, ThemeState>(
-      builder: (context, state) {
-        return MaterialApp(
-          theme: getThemeDataNight(),
-          debugShowCheckedModeBanner: false,
-          home: const WelcomeScreen(),
-        );
-      },
-    );
-  }
-}*/
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -80,19 +33,3 @@ class MyApp extends StatelessWidget {
     );
   }
 }
-/*
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'GoSchool UI',
-      theme: theme.dark
-          ? getThemeDataLight()
-          : getThemeDataNight(), //ThemeData.dark() : ThemeData.light(),
-      ThemeData(
-        primaryColor: Color(0xFF202328),
-        backgroundColor: Color(0xFF12171D),
-        visualDensity: VisualDensity.adaptivePlatformDensity, colorScheme: ColorScheme.fromSwatch().copyWith(secondary: Color(0xFF63CF93)),
-      ),
-      home: const WelcomeScreen(),
-    );8/
-  }
-}*/
