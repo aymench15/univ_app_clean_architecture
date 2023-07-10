@@ -13,7 +13,7 @@
 
 ![340047593_799447367707420_3620011305920144289_n](https://github.com/aymench15/univ_app_clean_architecture/assets/62136824/a872d6a3-e137-4428-9a23-6fa89d5a71da)
 
-![339651766_6302811413097497_5836366788503534416_n](https://github.com/aymench15/univ_app_clean_architecture/assets/62136824/47b3119c-c555-49ee-aa19-bc8ebccaf810)
+![339651766_6302811413097497_5836366788503534416_n](https://github.com/aymench15/univ_app_clean_architecture/assets/62136824/47b3119c-c555-49ee-aa19-bc8ebccaf810 200*400)
 
 ![339988235_605230414807424_8916095119943732322_n](https://github.com/aymench15/univ_app_clean_architecture/assets/62136824/5b011041-065e-4fd9-ae2b-e318aaf4a117)
 
